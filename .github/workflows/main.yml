@@ -49,10 +49,9 @@ jobs:
 #           file: ./Dockerfile
           
       - name: Replace
-        run:
-#           sed -i -e "s/image-name/$name/g" name
-            imagename=$(echo $nmae | awk '{print $2}')
-            echo $imagename
+        run: |
+          imagename=$(echo $nmae | awk '{print $2}')
+          echo $imagename
         env:
          name: ${{ steps.docker_meta.outputs.tags }}
           

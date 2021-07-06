@@ -50,5 +50,6 @@ jobs:
           
       - name: Prints
         run:
-          echo ${{ steps.docker_meta.outputs.tags }}
+          sed -i 's,image-name,ghcr.io/joshuawe45/hello-world:sha-417b206,g' name
+          echo name 
            

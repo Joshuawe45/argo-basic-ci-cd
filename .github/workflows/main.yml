@@ -48,9 +48,13 @@ jobs:
 #           tags: ${{ steps.docker_meta.outputs.tags }}
 #           file: ./Dockerfile
           
-      - name: Prints
+      - name: Replace
         run:
           sed -i -e 's,image-name,ghcr.io/joshuawe45/hello-world:sha-417b206,g' name
-          ls
-          echo name 
+          
+      - name: Prints
+        run:
+          cat name
+
+
            

@@ -50,7 +50,7 @@ jobs:
           
       - name: Replace
         run:
-          sed -i "s/image-name/$name/g" name
+          sed -i -e "s/image-name/$name/g" name
         env:
          name: ${{ steps.docker_meta.outputs.tags }}
           

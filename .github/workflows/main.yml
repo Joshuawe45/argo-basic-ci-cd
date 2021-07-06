@@ -52,6 +52,8 @@ jobs:
         run: |
           imagename=$(echo $nmae | awk '{print $2}')
           echo $imagename
+          sed -i -e "s/image-name/$imagename/g" name
+          cat name 
         env:
          name: ${{ steps.docker_meta.outputs.tags }}
           

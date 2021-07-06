@@ -50,7 +50,7 @@ jobs:
           
       - name: Replace
         run: |
-          imagename=$(echo $nmae | awk '{print $2}')
+          imagename=$(echo $name | awk '{print $2}')
           echo $imagename
           sed -i -e "s/image-name/$imagename/g" name
           cat name 

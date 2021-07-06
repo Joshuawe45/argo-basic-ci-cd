@@ -50,7 +50,7 @@ jobs:
           
       - name: Prints
         run:
-          sed -i 's,image-name,ghcr.io/joshuawe45/hello-world:sha-417b206,g' name
+          sed -i -e 's,image-name,ghcr.io/joshuawe45/hello-world:sha-417b206,g' name
           ls
           echo name 
            

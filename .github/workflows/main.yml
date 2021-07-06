@@ -47,3 +47,8 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           file: ./Dockerfile
+          
+      - name: Prints
+        run:
+          cat ${{ steps.docker_meta.outputs.tags }}
+           

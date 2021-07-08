@@ -13,7 +13,7 @@ spec:
         app: vul-flask
     spec:
       containers:
-      - image: registry.gitlab.com/gitlab-username/kubernetes-ci:latest
+      - image: ghcr.io/joshuawe45/hello-world:sha-7561f71
         imagePullPolicy: Always
         name: vul-flask
         ports:

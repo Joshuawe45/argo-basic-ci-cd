@@ -17,7 +17,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: ghcr.io/user-name/hello-world
+          images: ghcr.io/Joshuawe45/hello-world
           tag-sha: true
           tag-edge: false
           tag-latest: true
@@ -48,18 +48,6 @@ jobs:
           tags:  ${{ steps.docker_meta.outputs.tags }}
           file: ./Dockerfile
           
-#       - name: Replace
-#         run: |
-#           imagename=$(echo $name | awk '{print $2}')
-#           echo $imagename
-#           sed -i -e "s/image-name/$imagename/g" name
-#           cat name 
-#         env:
-#          name: ${{ steps.docker_meta.outputs.tags }}
-          
-#       - name: Prints
-#         run:
-#           cat name
 
 
            

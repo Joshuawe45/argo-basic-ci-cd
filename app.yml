@@ -1,0 +1,33 @@
+name: Application Scan 
+
+on:
+  push:
+
+jobs:
+  checkout-repo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
+    - name : Performing Sca 
+      working-directory: app 
+      continue-on-error: true
+      run : |
+        pip install safety PyJWT==1.5.2 requests==2.18.1 urllib3==1.21.1 itsdangerous==0.24 Jinja2==2.9.6
+        safety check --json >> safety_result.json
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Sca_Report
+        path: ${{ github.workspace }}/app/safety_result.json
+      name: 'Upload Sca Report'
+    - name : Installing the bandit tool
+      continue-on-error: true
+      run : |
+        ls 
+        pip install bandit
+        bandit -r -f json -o bandit_result.json app/ 
+    - uses: actions/upload-artifact@v1
+      with:
+        name: SAST_Report 
+        path: ${{ github.workspace }}/bandit_result.json
+      name: 'Upload Sca Report'

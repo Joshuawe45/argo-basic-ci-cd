@@ -1,0 +1,28 @@
+name: Application Scan 
+
+on:
+  push:
+
+jobs:
+  checkout-repo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
+    - name : Performing  Hadolint Scan
+      continue-on-error: true
+      run : |
+        docker run --rm -i hadolint/hadolint < Dockerfile  >> hadolint-results.txt
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Hadolint_Report
+        path: ${{ github.workspace }}/hadolint-results.txt 
+      name: 'Upload Hadolint Report'
+    - name : Performing  Trivy Scan
+      continue-on-error: true
+      run : |
+        wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.deb
+        sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
+        docker build -t test .
+        trivy image test 
+

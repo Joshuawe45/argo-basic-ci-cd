@@ -37,7 +37,7 @@ jobs:
       - name: Build image
         uses: docker/build-push-action@v2
         with:
-          tags: 0.1
+          tags:  ${{ steps.docker_meta.outputs.tags }}
           file: ./Dockerfile
           
           
@@ -45,7 +45,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: 0.1
+          tags:  ${{ steps.docker_meta.outputs.tags }}
           file: ./Dockerfile
           
 #       - name: Replace

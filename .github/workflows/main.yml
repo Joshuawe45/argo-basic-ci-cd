@@ -36,4 +36,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: latest
+          tags: joshuawe45/hello-world:latest
